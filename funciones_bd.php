@@ -76,7 +76,7 @@ class funciones_BD
 
     public function login($user, $passw)
     {
-        $jsonArray = [];
+        $jsonArray[] = array();
         $sql = "SELECT * FROM usuario WHERE login='$user' AND pass='$passw' ";
         if ($result = mysqli_query($this->con,$sql))
         {
