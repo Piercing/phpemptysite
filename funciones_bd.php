@@ -76,19 +76,17 @@ class funciones_BD
 
     public function login($user, $passw)
     {
-        // Consulta sobre la BD
-        $result = mysqli_query($this->con, "SELECT * FROM usuario WHERE login='$user' AND pass='$passw' ");
-        // Devuelve en numero de filas
+        $sql = "SELECT * FROM usuario WHERE login='$user' AND pass='$passw' ";
         $count  = mysqli_fetch_row($result);
         if ($result = mysqli_query($con,$sql))
         {
-        // Fetch one and one row
-        while ($row = mysqli_fetch_row($result))
-        {
-            printf ("%s (%s)\n", $row[0] ,$row[1]);
-        }
-        // Free result set
-        mysqli_free_result($result);
+            // Fetch one and one row
+            while ($row = mysqli_fetch_row($result))
+            {
+                printf ("%s (%s)\n", $row[0] ,$row[1]);
+            }
+            // Free result set
+            mysqli_free_result($result);
         }
     }
 
