@@ -83,8 +83,8 @@ class funciones_BD
             // Fetch one and one row
             if ($row = mysqli_fetch_row($result))
             {
-        //         //printf ("%s (%s)\n", $row[0] ,$row[1]);
-        //         $jsonArray.push($jsonArray, "{'id': $row[0]}");
+                //printf ("%s (%s)\n", $row[0] ,$row[1]);
+                $jsonArray.push($jsonArray, "{'id': $row[0]}");
         //         // $jsonArray.push($jsonArray, "{'login': $row[1]}");
         //         // $jsonArray.push($jsonArray, "{'email': $row[3]}");
         //         // $jsonArray.push($jsonArray, "{'cookie': $row[4]}");
