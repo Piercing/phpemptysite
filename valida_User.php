@@ -14,7 +14,7 @@
     // insertar funciones
     require_once 'funciones_bd.php';
     $db = new funciones_BD();
-    $result = $db->login($usuario, $passw)
+    //$result = $db->login($usuario, $passw)
     //echo json_encode($result);
     echo "login";
 ?>
