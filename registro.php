@@ -34,7 +34,7 @@ $db = new funciones_BD();
 
 // Comprobar si el usuario existe
 if ($db->isuserexist($usuario, $passw)) {
-    //echo(" Este usuario ya existe ingrese otro diferente!");
+    echo(" Este usuario ya existe ingrese otro diferente!");
     // asignar resultado
     $resultado = "0";
 
