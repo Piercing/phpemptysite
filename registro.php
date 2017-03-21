@@ -20,10 +20,12 @@ $clave   = base64_decode($clave);
 */
 
 echo "datos pasados: \n";
-echo "usuario: " . $_POST['usuario'] . "\n";
-echo "password: " . $_POST['password'] . "\n";
-echo "correo: " . $_POST['correo'] . "\n";
-echo "clave: " . $_POST['clave'] . "\n";
+echo "usuario: " . $usuario . "\n";
+echo "password: " . $passw . "\n";
+echo "correo: " . $mail . "\n";
+echo "clave: " . $clave . "\n";
+
+echo "INSERT INTO usuario(login,pass,email) VALUES('$username', '$password', '$mail')\n";
 
 // Incorporar funciones
 require_once 'funciones_bd.php';
@@ -45,7 +47,7 @@ if ($db->isuserexist($usuario, $passw)) {
         $resultado = "1";
     } else {
         if ($db->adduser($usuario, $passw, $mail)) {
-            //echo(" El usuario fue agregado a la Base de Datos correctamente.");
+            echo " El usuario fue agregado a la Base de Datos correctamente.";
 
             // preparar y enviar mensaje
             $para      = $mail;

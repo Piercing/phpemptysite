@@ -29,8 +29,7 @@ class funciones_BD
     {
 
         // Realizar insercción en la BD
-        $result = mysql_query("INSERT INTO usuario(login,pass,email) VALUES('$username',
- '$password', '$mail')");
+        $result = mysql_query("INSERT INTO usuario(login,pass,email) VALUES('$username', '$password', '$mail')");
         // comprobar si la inserccion es correcta y retornar resultado
         if ($result) {
             return true;
