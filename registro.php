@@ -25,7 +25,7 @@ echo "password: " . $passw . "\n";
 echo "correo: " . $mail . "\n";
 echo "clave: " . $clave . "\n";
 
-echo "INSERT INTO usuario(login,pass,email) VALUES('$username', '$password', '$mail')\n";
+echo "INSERT INTO usuario(login,pass,email) VALUES('$usuario', '$passw', '$mail')\n";
 
 // Incorporar funciones
 require_once 'funciones_bd.php';
