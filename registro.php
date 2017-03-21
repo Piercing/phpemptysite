@@ -1,8 +1,4 @@
 <?php
-// Incorporar funciones
-require_once 'funciones_bd.php';
-$db = new funciones_BD();
-
 // Nos devolvera un valor indicando si el registro fue correcto o no.
 // 0 —> registro invalido –> el usuario ya existe
 // 1 —> registro invalido –> el correo no es valido
@@ -23,6 +19,7 @@ $mail    = base64_decode($mail);
 $clave   = base64_decode($clave);
 */
 
+/*
 echo "datos pasados: \n";
 echo "usuario: " . $usuario . "\n";
 echo "password: " . $passw . "\n";
@@ -30,10 +27,24 @@ echo "correo: " . $mail . "\n";
 echo "clave: " . $clave . "\n";
 
 echo "INSERT INTO usuario(login,pass,email) VALUES('$usuario', '$passw', '$mail')\n";
+*/
+// Incorporar funciones
+require_once 'funciones_bd.php';
+$db = new funciones_BD();
 
-// // Incorporar funciones
-// require_once 'funciones_bd.php';
-// $db = new funciones_BD();
+$enlace = mysqli_connect("eu-cdbr-azure-west-d.cloudapp.net", "bf8fe44cc88880", "9e610bd0", "acsm_764524dac413151");
+
+if (!$enlace) {
+    echo "Error: No se pudo conectar a MySQL." . PHP_EOL;
+    echo "errno de depuración: " . mysqli_connect_errno() . PHP_EOL;
+    echo "error de depuración: " . mysqli_connect_error() . PHP_EOL;
+    exit;
+}
+
+echo "Éxito: Se realizó una conexión apropiada a MySQL! La base de datos mi_bd es genial." . PHP_EOL;
+echo "Información del host: " . mysqli_get_host_info($enlace) . PHP_EOL;
+
+mysqli_close($enlace);
 
 // Comprobar si el usuario existe
 if ($db->isuserexist($usuario, $passw)) {
@@ -42,7 +53,6 @@ if ($db->isuserexist($usuario, $passw)) {
     $resultado = "0";
 
 } else {
-
     // verificar si el mail existe (hasta cierto punto), verificamos que el dominio existe
     // checkdnsrr — Comprueba registros DNS correspondientes a un nombre de host de Internet dado o dirección IP
     $dominio = explode('@', $mail); // devuelve un array
@@ -50,8 +60,8 @@ if ($db->isuserexist($usuario, $passw)) {
         // asignar resultado
         $resultado = "1";
     } else {
-        var $kk = $db->adduser2($usuario, $passw, $mail);
-        echo "error: " . $kk;
+        //var $kk = $db->adduser2($usuario, $passw, $mail);
+        //echo "error: " . $kk;
         if ($db->adduser($usuario, $passw, $mail)) {
             echo " El usuario fue agregado a la Base de Datos correctamente.";
 
