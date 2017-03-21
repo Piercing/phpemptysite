@@ -8,9 +8,10 @@ $_id = $_POST['_id'];
 // Incorporar funciones
 require_once 'funciones_bd.php';
 $db = new funciones_BD();
+$con = $db->connect();
 
 // Obtener la descripcion del registro especificado
-$sql = mysql_query("SELECT descripcion from audiolibros WHERE id = '$_id'");
+$sql = mysqli_query($con, "SELECT descripcion from audiolibros WHERE id = '$_id'");
 
 //número de filas retornadas
 $num_rows = mysql_num_rows($sql);

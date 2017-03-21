@@ -8,8 +8,8 @@ $usuario = $_POST['usuario'];
 $passw   = $_POST['password'];
 
 // Decodificar valores en base64
-$usuario = base64_decode($usuario);
-$passw   = base64_decode($passw);
+//$usuario = base64_decode($usuario);
+//$passw   = base64_decode($passw);
 
 // insertar funciones
 require_once 'funciones_bd.php';

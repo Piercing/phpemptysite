@@ -60,17 +60,35 @@ class funciones_BD
         }
     }
 
+    // public function login($user, $passw)
+    // {
+    //     // Consulta sobre la BD
+    //     $result = mysqli_query($this->con, "SELECT COUNT(*) FROM usuario WHERE login='$user' AND pass='$passw' ");
+    //     // Devuelve en numero de filas
+    //     $count  = mysqli_fetch_row($result);
+    //     /*como el usuario debe ser unico cuenta el numero de ocurrencias con esos datos*/
+    //     if ($count[0] == 1) {
+    //         return true;
+    //     } else {
+    //         return false;
+    //     }
+    // }
+
     public function login($user, $passw)
     {
         // Consulta sobre la BD
-        $result = mysqli_query($this->con, "SELECT COUNT(*) FROM usuario WHERE login='$user' AND pass='$passw' ");
+        $result = mysqli_query($this->con, "SELECT * FROM usuario WHERE login='$user' AND pass='$passw' ");
         // Devuelve en numero de filas
         $count  = mysqli_fetch_row($result);
-        /*como el usuario debe ser unico cuenta el numero de ocurrencias con esos datos*/
-        if ($count[0] == 1) {
-            return true;
-        } else {
-            return false;
+        if ($result = mysqli_query($con,$sql))
+        {
+        // Fetch one and one row
+        while ($row = mysqli_fetch_row($result))
+        {
+            printf ("%s (%s)\n", $row[0] ,$row[1]);
+        }
+        // Free result set
+        mysqli_free_result($result);
         }
     }
 
