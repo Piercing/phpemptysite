@@ -76,25 +76,25 @@ class funciones_BD
 
     public function login($user, $passw)
     {
-        //$jsonArray[] = array();
+        $jsonArray[] = array();
         $sql = "SELECT * FROM usuario WHERE login='$user' AND pass='$passw' ";
-        // if ($result = mysqli_query($this->con,$sql))
-        // {
-        //     // Fetch one and one row
-        //     if ($row = mysqli_fetch_row($result))
-        //     {
-        //         //printf ("%s (%s)\n", $row[0] ,$row[1]);
-        //         $jsonArray.push($jsonArray, "{'id': $row[0]}");
-        //         // $jsonArray.push($jsonArray, "{'login': $row[1]}");
-        //         // $jsonArray.push($jsonArray, "{'email': $row[3]}");
-        //         // $jsonArray.push($jsonArray, "{'cookie': $row[4]}");
-        //         // $jsonArray.push($jsonArray, "{'validez': $row[5]}");
-        //     }
-        //     // Free result set
-        //     mysqli_free_result($result);
-        // }
-        return "{value:10}";
-        //return $jsonArray;
+        if ($result = mysqli_query($this->con,$sql))
+        {
+            // Fetch one and one row
+            if ($row = mysqli_fetch_row($result))
+            {
+                //printf ("%s (%s)\n", $row[0] ,$row[1]);
+                $jsonArray.push($jsonArray, "{'id': $row[0]}");
+                // $jsonArray.push($jsonArray, "{'login': $row[1]}");
+                // $jsonArray.push($jsonArray, "{'email': $row[3]}");
+                // $jsonArray.push($jsonArray, "{'cookie': $row[4]}");
+                // $jsonArray.push($jsonArray, "{'validez': $row[5]}");
+            }
+            // Free result set
+            mysqli_free_result($result);
+        }
+        //return "{value:10}";
+        return $jsonArray;
     }
 
 } // funciones_BD
