@@ -4,6 +4,7 @@ class funciones_BD
 {
 
     private $db;
+    private $con;
 
     // constructor
     function __construct()
@@ -14,7 +15,7 @@ class funciones_BD
 
         // conectar a la BD
         $this->db = new DB_Connect();
-        $this->db->connect();
+        $this->con = $this->db->connect();
     }
 
     // destructor
@@ -29,21 +30,13 @@ class funciones_BD
     {
 
         // Realizar insercción en la BD
-        $result = mysql_query("INSERT INTO usuario(login,pass,email) VALUES('$username', '$password', '$mail')");
+        $result = mysqli_query($this->con, "INSERT INTO usuario(login,pass,email) VALUES('$username', '$password', '$mail')");
         // comprobar si la inserccion es correcta y retornar resultado
         if ($result) {
             return true;
         } else {
             return false;
         }
-    }
-
-    public function adduser2($username, $password, $mail)
-    {
-
-        // Realizar insercción en la BD
-        $result = mysql_query("INSERT INTO usuario(login,pass,email) VALUES('$username', '$password', '$mail')");
-        return $result;
     }
 
     /**
@@ -53,7 +46,7 @@ class funciones_BD
     {
 
         // Consulta sobre la BD
-        $result   = mysqli_query("SELECT login FROM usuario WHERE login = '$username'");
+        $result   = mysqli_query($this->con, "SELECT login FROM usuario WHERE login = '$username'");
         //numero de filas retornadas
         $num_rows = mysqli_num_rows($result);
 
@@ -70,7 +63,7 @@ class funciones_BD
     public function login($user, $passw)
     {
         // Consulta sobre la BD
-        $result = mysqli_query("SELECT COUNT(*) FROM usuario WHERE login='$user' AND pass='$passw' ");
+        $result = mysqli_query($this->con, "SELECT COUNT(*) FROM usuario WHERE login='$user' AND pass='$passw' ");
         // Devuelve en numero de filas
         $count  = mysqli_fetch_row($result);
         /*como el usuario debe ser unico cuenta el numero de ocurrencias con esos datos*/
