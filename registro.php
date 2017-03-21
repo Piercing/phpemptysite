@@ -1,4 +1,8 @@
 <?php
+// Incorporar funciones
+require_once 'funciones_bd.php';
+$db = new funciones_BD();
+
 // Nos devolvera un valor indicando si el registro fue correcto o no.
 // 0 —> registro invalido –> el usuario ya existe
 // 1 —> registro invalido –> el correo no es valido
@@ -27,9 +31,9 @@ echo "clave: " . $clave . "\n";
 
 echo "INSERT INTO usuario(login,pass,email) VALUES('$usuario', '$passw', '$mail')\n";
 
-// Incorporar funciones
-require_once 'funciones_bd.php';
-$db = new funciones_BD();
+// // Incorporar funciones
+// require_once 'funciones_bd.php';
+// $db = new funciones_BD();
 
 // Comprobar si el usuario existe
 if ($db->isuserexist($usuario, $passw)) {
