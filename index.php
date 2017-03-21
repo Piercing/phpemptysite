@@ -20,11 +20,13 @@
   echo "Éxito: Se realizó una conexión apropiada a MySQL! La base de datos mi_bd es genial." . PHP_EOL;
   echo "Información del host: " . mysqli_get_host_info($enlace) . PHP_EOL;
 
-  $result = mysql_query($enlace, "INSERT INTO usuario(login,pass,email) VALUES('$usuario', '$passw', '$mail')");
+  $result = mysqli_query($enlace, "INSERT INTO usuario(login,pass,email) VALUES('$usuario', '$passw', '$mail')");
   // comprobar si la inserccion es correcta y retornar resultado
   if ($result) {
+      echo "ok";
       return true;
   } else {
+    echo "KO";
       return false;
   }
 
