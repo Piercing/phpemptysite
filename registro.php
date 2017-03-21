@@ -12,13 +12,18 @@ $mail    = $_POST['correo'];
 $clave   = $_POST['clave'];
 
 // Decodificar valores en base64
+/*
 $usuario = base64_decode($usuario);
 $passw   = base64_decode($passw);
 $mail    = base64_decode($mail);
 $clave   = base64_decode($clave);
+*/
 
 echo "datos pasados: \n";
 echo "usuario: " . $_POST['usuario'] . "\n";
+echo "password: " . $_POST['password'] . "\n";
+echo "correo: " . $_POST['correo'] . "\n";
+echo "clave: " . $_POST['clave'] . "\n";
 
 // Incorporar funciones
 require_once 'funciones_bd.php';
