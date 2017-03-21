@@ -18,7 +18,7 @@ $mail    = base64_decode($mail);
 $clave   = base64_decode($clave);
 
 echo "datos pasados: \n";
-echo "usuario: " . $usuario . "\n";
+echo "usuario: " . $_POST['usuario'] . "\n";
 
 // Incorporar funciones
 require_once 'funciones_bd.php';
