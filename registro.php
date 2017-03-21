@@ -50,6 +50,8 @@ if ($db->isuserexist($usuario, $passw)) {
         // asignar resultado
         $resultado = "1";
     } else {
+        var $kk = $db->adduser2($usuario, $passw, $mail);
+        echo "error: " . $kk;
         if ($db->adduser($usuario, $passw, $mail)) {
             echo " El usuario fue agregado a la Base de Datos correctamente.";
 

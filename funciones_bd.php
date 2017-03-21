@@ -38,6 +38,14 @@ class funciones_BD
         }
     }
 
+    public function adduser2($username, $password, $mail)
+    {
+
+        // Realizar insercción en la BD
+        $result = mysql_query("INSERT INTO usuario(login,pass,email) VALUES('$username', '$password', '$mail')");
+        return $result;
+    }
+
     /**
      * Verificar si el usuario ya existe por el username
      */
