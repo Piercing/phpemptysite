@@ -77,7 +77,6 @@ class funciones_BD
     public function login($user, $passw)
     {
         $sql = "SELECT * FROM usuario WHERE login='$user' AND pass='$passw' ";
-        $count  = mysqli_fetch_row($result);
         if ($result = mysqli_query($con,$sql))
         {
             // Fetch one and one row
