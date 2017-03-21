@@ -76,7 +76,7 @@ class funciones_BD
 
     public function login($user, $passw)
     {
-        $jsonArray[] = array();
+        //$jsonArray[] = array();
         $sql = "SELECT * FROM usuario WHERE login='$user' AND pass='$passw' ";
         // if ($result = mysqli_query($this->con,$sql))
         // {
@@ -93,7 +93,8 @@ class funciones_BD
         //     // Free result set
         //     mysqli_free_result($result);
         // }
-        return $jsonArray;
+        return "{value:10}";
+        //return $jsonArray;
     }
 
 } // funciones_BD
