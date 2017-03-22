@@ -13,8 +13,16 @@
 
     // insertar funciones
     require_once 'funciones_bd.php';
+    require_once (__DIR__ . '/Models/Response.php');
+
     $db = new funciones_BD();
     $result = $db->login($usuario, $passw);
-    echo json_encode($result);
+
+    //header('Content-Type: application/json');
+    //echo $result;
+    //echo json_encode($result);
+    var $response = new Response($result);
+
+    echo ''; //$response.getJSON();
 ?>
 
