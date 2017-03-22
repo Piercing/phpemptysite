@@ -76,19 +76,19 @@ class funciones_BD
 
     public function login($user, $passw)
     {
-        $jsonArray[] = array();
+        $jsonArray = array();
         $sql = "SELECT * FROM usuario WHERE login='$user' AND pass='$passw' ";
         if ($result = mysqli_query($this->con,$sql))
         {
             // Fetch one and one row
-            if ($row = mysqli_fetch_row($result))
+
+            if ($row = $result->fetch_row())
             {
-                //printf ("%s (%s)\n", $row[0] ,$row[1]);
-                array.push($jsonArray, "{'id': 65654}");
-        //         // $jsonArray.push($jsonArray, "{'login': $row[1]}");
-        //         // $jsonArray.push($jsonArray, "{'email': $row[3]}");
-        //         // $jsonArray.push($jsonArray, "{'cookie': $row[4]}");
-        //         // $jsonArray.push($jsonArray, "{'validez': $row[5]}");
+                $jsonArray['id'] = $row[0];
+                $jsonArray['login'] = $row[1];
+                $jsonArray['email'] = $row[3];
+                $jsonArray['cookie'] = $row[4];
+                $jsonArray['validez'] = $row[5];
             }
             // Free result set
             mysqli_free_result($result);

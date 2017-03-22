@@ -16,6 +16,5 @@
     $db = new funciones_BD();
     $result = $db->login($usuario, $passw);
     echo json_encode($result);
-    //echo "login";
 ?>
 
