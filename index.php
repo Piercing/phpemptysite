@@ -5,6 +5,7 @@
     echo "<ul>";
     echo "<li><a href='books.php' target='_BLANK'>All books</a></li>";
     echo "<li><a href='users.php' target='_BLANK'>All users</a></li>";
+    echo "<li><a href='db_descrip.php?id=1' target='_BLANK'>Get book by id (1)</a></li>";
     echo "</ul>";
     
     echo "<h2>Validate user</h2>";
