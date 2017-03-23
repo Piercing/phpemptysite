@@ -30,13 +30,13 @@
         // verificar si el mail existe (hasta cierto punto), verificamos que el dominio existe
         // checkdnsrr — Comprueba registros DNS correspondientes a un nombre de host de Internet dado o dirección IP
         $dominio = explode('@', $mail); // devuelve un array
-        if (!checkdnsrr($dominio[1])) {
-            // asignar resultado
-            $response = new Response(null, " Introduzca una dirección de email válida");
-            $jsonResponse = $response->getJSON();
-            $response = null;
-            echo $jsonResponse;
-        } else {
+        //if (!checkdnsrr($dominio[1])) {
+        //     // asignar resultado
+        //     $response = new Response(null, " Introduzca una dirección de email válida");
+        //     $jsonResponse = $response->getJSON();
+        //     $response = null;
+        //     echo $jsonResponse;
+        // } else {
             if ($db->adduser($usuario, $passw, $mail)) {
                 //echo " El usuario fue agregado a la Base de Datos correctamente.";
                 $result = $db->getUserByLogin($usuario, $passw);
@@ -67,7 +67,7 @@
                 $response = null;
                 echo $jsonResponse;                
             }
-        }
+        //}
     }
 ?>
 
