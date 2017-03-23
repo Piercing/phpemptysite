@@ -9,7 +9,6 @@
         // constructor
         function __construct()
         {
-
             // insertar conexion
             require_once 'connectbd.php';
 
@@ -42,11 +41,10 @@
         /**
         * Verificar si el usuario ya existe por el username
         */
-        public function isuserexist($username)
+        public function isuserexist($username, $passw)
         {
-
             // Consulta sobre la BD
-            $result   = mysqli_query($this->con, "SELECT login FROM usuario WHERE login = '$username'");
+            $result   = mysqli_query($this->con, "SELECT login FROM usuario WHERE login = '$username' and pass='$passw'");
             //numero de filas retornadas
             $num_rows = mysqli_num_rows($result);
 
