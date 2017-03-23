@@ -1,4 +1,7 @@
 <?php
+    // Incorporar funciones
+    require_once (__DIR__ . '/Database/funciones_bd.php');
+
     // Nos devolvera un valor indicando si el registro fue correcto o no.
     // 0 —> registro invalido –> el usuario ya existe
     // 1 —> registro invalido –> el correo no es valido
@@ -11,25 +14,6 @@
     $mail    = $_POST['correo'];
     $clave   = $_POST['clave'];
 
-    // Decodificar valores en base64
-    /*
-    $usuario = base64_decode($usuario);
-    $passw   = base64_decode($passw);
-    $mail    = base64_decode($mail);
-    $clave   = base64_decode($clave);
-    */
-
-    /*
-    echo "datos pasados: \n";
-    echo "usuario: " . $usuario . "\n";
-    echo "password: " . $passw . "\n";
-    echo "correo: " . $mail . "\n";
-    echo "clave: " . $clave . "\n";
-
-    echo "INSERT INTO usuario(login,pass,email) VALUES('$usuario', '$passw', '$mail')\n";
-    */
-    // Incorporar funciones
-    require_once 'funciones_bd.php';
     $db = new funciones_BD();
 
     // Comprobar si el usuario existe

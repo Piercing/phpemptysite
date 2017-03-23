@@ -6,7 +6,7 @@
 $_id = $_POST['_id'];
 
 // Incorporar funciones
-require_once 'funciones_bd.php';
+require_once (__DIR__ . '/Database/funciones_bd.php');
 $db = new funciones_BD();
 $con = $db->connect();
 

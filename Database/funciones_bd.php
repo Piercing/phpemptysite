@@ -60,41 +60,36 @@
             }
         }
 
-        // public function login($user, $passw)
-        // {
-        //     // Consulta sobre la BD
-        //     $result = mysqli_query($this->con, "SELECT COUNT(*) FROM usuario WHERE login='$user' AND pass='$passw' ");
-        //     // Devuelve en numero de filas
-        //     $count  = mysqli_fetch_row($result);
-        //     /*como el usuario debe ser unico cuenta el numero de ocurrencias con esos datos*/
-        //     if ($count[0] == 1) {
-        //         return true;
-        //     } else {
-        //         return false;
-        //     }
-        // }
-
         public function login($user, $passw)
         {
-            $jsonArray = array();
             $sql = "SELECT * FROM usuario WHERE login='$user' AND pass='$passw' ";
             if ($result = mysqli_query($this->con,$sql))
             {
-                // Fetch one and one row
-                if ($row = $result->fetch_assoc())
-                {
-                    $jsonArray['id'] = $row['id'];
-                    $jsonArray['login'] = $row['login'];
-                    $jsonArray['email'] = $row['email'];
-                    $jsonArray['cookie'] = $row['cookie'];
-                    $jsonArray['validez'] = $row['validez'];
-                }
-                // Free result set
-                mysqli_free_result($result);
+                return $result;
             }
-            //return "{value:10}";
-            return $jsonArray;
+            return null;
         }
+
+        public function getAllUsers()
+        {
+            $sql = "SELECT * FROM usuario order by idUsuario ";
+            if ($result = mysqli_query($this->con,$sql))
+            {
+                return $result;
+            }
+            return null;
+        }
+
+        public function getAllBooks()
+        {
+            $sql = "SELECT id, titulo, autor, tema, descripcion, imagen2, mp3 FROM audiolibros ";
+            if ($result = mysqli_query($this->con,$sql))
+            {
+                return $result;
+            }
+            return null;
+        }
+
 
     } // funciones_BD
 
