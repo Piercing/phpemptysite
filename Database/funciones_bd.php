@@ -111,6 +111,15 @@
             return null;
         }
 
+        public function getBookById($id)
+        {
+            $sql = "SELECT id, titulo, autor, tema, descripcion, imagen2, mp3 FROM audiolibros WHERE id = '$id' ";
+            if ($result = mysqli_query($this->con,$sql)) {
+                return $result;
+            }
+            return null;
+        }        
+
 
     } // funciones_BD
 
