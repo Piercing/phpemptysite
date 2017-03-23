@@ -5,8 +5,9 @@
 
     $db = new funciones_BD();
     $result = $db->getAllUsers();
-
     $response = new Response($result);
-    echo $response->getJSON();
+    $jsonResponse = $response->getJSON();
+    $response = null;
+    echo $jsonResponse;
 ?>
 

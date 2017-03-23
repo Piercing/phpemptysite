@@ -1,6 +1,7 @@
 <?php
     // Incorporar funciones
     require_once (__DIR__ . '/Database/funciones_bd.php');
+    require_once (__DIR__ . '/Models/Response.php');
 
     // Nos devolvera un valor indicando si el registro fue correcto o no.
     // 0 —> registro invalido –> el usuario ya existe
@@ -18,21 +19,31 @@
 
     // Comprobar si el usuario existe
     if ($db->isuserexist($usuario, $passw)) {
-        echo(" Este usuario ya existe ingrese otro diferente!");
+        //echo(" Este usuario ya existe ingrese otro diferente!");
         // asignar resultado
-        $resultado = "0";
-
+        //$resultado = "0";
+        $response = new Response(null, " Este usuario ya existe ingrese otro diferente!");
+        $jsonResponse = $response->getJSON();
+        $response = null;
+        echo $jsonResponse;
     } else {
         // verificar si el mail existe (hasta cierto punto), verificamos que el dominio existe
         // checkdnsrr — Comprueba registros DNS correspondientes a un nombre de host de Internet dado o dirección IP
         $dominio = explode('@', $mail); // devuelve un array
         if (!checkdnsrr($dominio[1])) {
             // asignar resultado
-            $resultado = "1";
+            $response = new Response(null, " Introduzca una dirección de email válida");
+            $jsonResponse = $response->getJSON();
+            $response = null;
+            echo $jsonResponse;
         } else {
             if ($db->adduser($usuario, $passw, $mail)) {
-                echo " El usuario fue agregado a la Base de Datos correctamente.";
-
+                //echo " El usuario fue agregado a la Base de Datos correctamente.";
+                $result = $db->getUserByLogin($usuario, $passw);
+                $response = new Response($result, "Se produjo un error al registrar al usuario");
+                $jsonResponse = $response->getJSON();
+                $response = null;
+                
                 // preparar y enviar mensaje
                 $para      = $mail;
                 $de        = 'admin@audiobooks.hol.es';
@@ -46,20 +57,18 @@
                 // Enviar correo
                 mail($para, $asunto, $mensaje, $cabeceras);
 
-                // asignar resultado
-                $resultado = "3";
-
+                echo $jsonResponse;
             } else {
                 //echo(" ha ocurrido un error.");
                 // asignar resultado
-                $resultado = "2";
+                //$resultado = "2";
+                $response = new Response(null, " ha ocurrido un error.");
+                $jsonResponse = $response->getJSON();
+                $response = null;
+                echo $jsonResponse;                
             }
         }
     }
-
-    //echo json_encode($resultado);
-    // Devolver resultado
-    echo $resultado;
 ?>
 
 

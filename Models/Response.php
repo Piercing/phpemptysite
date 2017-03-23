@@ -5,8 +5,14 @@
         var $error;
         var $data;
 
-        // constructor
-        function __construct($dataFromDb) {
+        // constructor             
+        function __construct($dataFromDb, $error) {
+            if (!$dataFromDb) {
+                $this->totalRows = 0;
+                $this->error = $error;
+                $this->data = null;
+                return;
+            }
             $this->totalRows = mysqli_num_rows($dataFromDb);
             $this->error = "";
             $this->data = $this->parseResults($dataFromDb);
@@ -21,7 +27,9 @@
                 {
                     $jsonItem = array();
                     foreach ($fields as $field) {
-                        $jsonItem[$field->name] = $row[$field->name];
+                        if ((strcmp($field->name, "pass") != 0) && (strcmp($field->name, "clave") != 0)) {
+                            $jsonItem[$field->name] = $row[$field->name];
+                        }
                     }                
                     array_push($jsonArray, $jsonItem);
                 }

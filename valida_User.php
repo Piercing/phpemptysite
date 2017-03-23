@@ -8,5 +8,7 @@
     $db = new funciones_BD();
     $result = $db->login($usuario, $passw);
     $response = new Response($result);
-    echo $response->getJSON();
+    $jsonResponse = $response->getJSON();
+    $response = null;
+    echo $jsonResponse;
 ?>

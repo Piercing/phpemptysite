@@ -21,6 +21,7 @@
         // destructor
         function __destruct()
         {
+            mysqli_close($this->con);
         }
 
         /**
@@ -28,7 +29,6 @@
         */
         public function adduser($username, $password, $mail)
         {
-
             // Realizar insercción en la BD
             $result = mysqli_query($this->con, "INSERT INTO usuario(login,pass,email) VALUES('$username', '$password', '$mail')");
             // comprobar si la inserccion es correcta y retornar resultado
@@ -69,6 +69,27 @@
             }
             return null;
         }
+
+        public function getUserByLogin($user, $passw)
+        {
+            $sql = "SELECT * FROM usuario WHERE login='$user' AND pass='$passw' ";
+            if ($result = mysqli_query($this->con,$sql))
+            {
+                return $result;
+            }
+            return null;
+        }        
+
+        public function getUserById($id)
+        {
+            $sql = "SELECT * FROM usuario WHERE idUsuario=$id ";
+            if ($result = mysqli_query($this->con,$sql))
+            {
+                return $result;
+            }
+            return null;
+        }
+
 
         public function getAllUsers()
         {
