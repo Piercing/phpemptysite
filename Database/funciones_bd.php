@@ -101,7 +101,7 @@
 
         public function getAllBooks()
         {
-            $sql = "SELECT id, titulo, autor, tema, descripcion, imagen2, mp3 FROM audiolibros ";
+            $sql = "SELECT id, titulo, autor, tema, descripcion, imagen1, imagen2, mp3 FROM audiolibros ";
             if ($result = mysqli_query($this->con,$sql))
             {
                 return $result;
