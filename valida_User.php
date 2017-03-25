@@ -11,6 +11,6 @@
     $jsonResponse = $response->getJSON();
     $response = null;
 
-    ob_clean();
+    //ob_clean();
     echo $jsonResponse;
 ?>
