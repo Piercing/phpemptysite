@@ -9,6 +9,8 @@
     $response = new Response($result);
     $jsonResponse = $response->getJSON();
     $response = null;
+
+    ob_clean();
     echo $jsonResponse;
 ?>
 
